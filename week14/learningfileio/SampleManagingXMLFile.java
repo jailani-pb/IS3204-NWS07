@@ -151,6 +151,21 @@ public class SampleManagingXMLFile {
 					} catch (IOException e) {
 						System.out.println("Failed to write file.");
 					}
+				} else {
+					System.out.println("Do you want to delete?");
+					System.out.println("yes/no");
+					userInput = scanUserInput.nextLine();
+					if(userInput.trim().equalsIgnoreCase("yes")) {
+						fileContent.replace(dataStart, dataEnd, "");
+						
+						try {
+							PrintWriter writeFile = new PrintWriter(new FileWriter(file, false));
+							writeFile.println(fileContent);
+							writeFile.close();
+						} catch (IOException e) {
+							System.out.println("Failed to write file.");
+						}
+					}
 				}
 			} else {
 				StringBuilder newData = new StringBuilder();
